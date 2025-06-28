@@ -1,0 +1,21 @@
+## Proces riešenia
+
+1. Overenie stavu
+    - Skontrolujem ktorý konkrétny krok je zaseknutý v dashboard Jenkins / GitLab CI
+2. Skontrolujem logy
+    - konzola buildu : skontrolujem posledne hlasenie pred zaseknutim
+    - Runner logs:
+        - GitLab: gitlab-runner logy
+        - Jenkins: jenkins.log
+    - Docker logs ak sa build spusta v kontajneroch
+
+Ako unblocknut :
+- Zrušiť stuck job
+- Reštartovať runnera alebo agenta : gitlab-runner restart alebo slave v jenkinse
+- Reštartovať pipeline
+
+PREVENCIA
+- Pravidelné čistenie runnerov
+- Monitorovanie CI výkonnosti
+- Automatická detekcia zaseknutých jobov
+- Použitie timeout v CI configoch

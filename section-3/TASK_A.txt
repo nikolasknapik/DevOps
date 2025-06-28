@@ -1,0 +1,17 @@
+Postup riesenia :
+
+1. Overim nefunkcnost aplikacie. 
+    - Otvorim aplikaciu ako uzivatel
+    - Skontroluejem monitrovacie nastroje a health check endpoints 
+2. Skontrolujem logy a upozornenia
+    - V logoch bude hladat zaznamy typu ERROR, FATAL, 502, panic
+3. Skontrolujem infrastrukturu
+    - Ci bezia servery, kontrajnery alebo databaza. 
+    - Ci nie je vycerpana pamat alebo miesto na disku
+4. Izolujem problem
+    - Zistim ci je problem v backende alebo frontende
+5. Obnovenie fungovania
+    - Ak vypadok sposobil novy deployment pouzijem rollback na obnovenie poslednej funkcnej verzie
+    - Ak aplikacia alebo kontajnery zamrzli - restartujem a sledujem ich stav
+6. Analyza
+    - Po obnoveni
