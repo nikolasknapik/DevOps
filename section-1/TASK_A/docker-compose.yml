@@ -1,0 +1,13 @@
+services:
+  terraform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/workspace
+      - terraform_plugins:/workspace/.terraform
+    working_dir: /workspace
+    command: /bin/sh -c "terraform init && terraform validate"
+
+volumes:
+  terraform_plugins:

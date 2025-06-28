@@ -1,0 +1,20 @@
+# Ignoruj Terraform cache a build artefakty
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+crash.log
+*.log
+
+# Ignoruj všetky zipy, binárky, veľké súbory
+*.zip
+*.tar.gz
+*.exe
+*.bin
+*.iso
+
+# IDE a OS súbory
+.vscode/
+.idea/
+*.DS_Store
+*.swp
