@@ -1,0 +1,47 @@
+# Zadanie
+
+\# docker-compose.yml
+version: '3'
+services:
+    web:
+        build: .
+        ports:
+            - "3000:3000"
+    nginx:
+        image: nging:alpine
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - "80:80"
+        depends_on:
+            - web
+
+# nginx.conf
+server {
+    listen 80;
+    location / {
+        proxy_pass https://web:8080;
+        ...
+    }
+}
+
+// server.js
+const express = require('express');
+const app = express();
+const PORT = 3000;
+...
+
+
+# pricina chyby 502 Bad Gateway je ze v server.js je nastaveny port na 3000 a nginx.conf sa snazi presmerovat na https://web:8080. Tam by mal byt port 3000s
+
+V Express bezi cez obycajne HTTP nie HTTPS
+
+cize oprava je:
+
+proxy_pass http://web:3000;
+
+Ako tomu predist ?
+
+- Na miesto natvrdo zaevidovanych portov je lepsie pouzit premenne prostredia alebo konfiguracne subory
+- pouzivat health-check
+- zaznamenavat logy : error logy v Nginxe a logy v Node.js
